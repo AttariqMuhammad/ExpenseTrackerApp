@@ -9,6 +9,7 @@ import AllExpense from "./screens/AllExpenseScreen";
 import RecentExpense from "./screens/RecentExpenseScreen";
 import ManageExpense from "./screens/ManageExpenseScreen";
 
+import IconButton from "./components/UI/IconButton";
 import { GlobalStyles } from "./constants/styles";
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
           headerTintColor: "white",
           tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
           tabBarActiveTintColor: GlobalStyles.colors.accent500,
+          headerRight: ({ tintColor }) => (
+            <IconButton icon="add" color={tintColor} size={24} />
+          ),
         }}
       >
         <Tab.Screen
@@ -55,7 +59,13 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            headerTintColor: "white",
+            contentStyle: { backgroundColor: GlobalStyles.colors.primary700 },
+          }}
+        >
           <Stack.Screen
             name="Overview"
             component={ExpenseOverview}

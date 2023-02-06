@@ -9,8 +9,8 @@ function ExpenseSummary({ expenses, periodName }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{periodName}</Text>
-      <Text style={styles.text}>$ {expenseSum.toFixed(2)}</Text>
+      <Text style={styles.period}>{periodName}</Text>
+      <Text style={styles.sum}>$ {expenseSum.toFixed(2)}</Text>
     </View>
   );
 }
@@ -21,14 +21,20 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 6,
-    margin: 24,
     borderRadius: 8,
-    backgroundColor: GlobalStyles.colors.primary400,
+    backgroundColor: GlobalStyles.colors.primary50,
+    elevation: 4,
   },
-  text: {
-    color: "white",
+  period: {
+    color: GlobalStyles.colors.primary400,
+    fontSize: 14,
+  },
+  sum: {
+    color: GlobalStyles.colors.primary500,
+    fontWeight: "bold",
     fontSize: 18,
   },
 });
