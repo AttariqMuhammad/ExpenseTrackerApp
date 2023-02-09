@@ -6,7 +6,13 @@ import { ExpenseContext } from "../store/expenses-context";
 function AllExpense() {
   const { expenses } = useContext(ExpenseContext);
 
-  return <ExpenseOutput expenses={expenses} periodName={"All Time"} />;
+  return (
+    <ExpenseOutput
+      expenses={expenses}
+      periodName={"Total"}
+      fallbackText="No Expense Registered"
+    />
+  );
 }
 
 export default AllExpense;

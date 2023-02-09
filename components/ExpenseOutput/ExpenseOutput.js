@@ -4,11 +4,17 @@ import ExpenseSummary from "./ExpenseSummary";
 import ExpenseList from "./ExpenseList";
 import { GlobalStyles } from "../../constants/styles";
 
-function ExpenseOutput({ expenses, periodName }) {
+function ExpenseOutput({ expenses, periodName, fallbackText }) {
+  let content = <Text style={styles.content}>{fallbackText}</Text>;
+
+  if (expenses.length > 0) {
+    content = <ExpenseList expenses={expenses} />;
+  }
+
   return (
     <View style={styles.container}>
       <ExpenseSummary expenses={expenses} periodName={periodName} />
-      <ExpenseList expenses={expenses} />
+      {content}
     </View>
   );
 }
@@ -21,5 +27,11 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingHorizontal: 24,
     backgroundColor: GlobalStyles.colors.primary700,
+  },
+  content: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 16,
+    marginTop: 32,
   },
 });
