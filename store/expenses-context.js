@@ -37,7 +37,7 @@ export const ExpenseContext = createContext({
   expenses: [],
   addExpense: ({ description, amount, date }) => {},
   deleteExpense: (id) => {},
-  updateExpese: (id, { description, amount, date }) => {},
+  updateExpense: (id, { description, amount, date }) => {},
 });
 
 function expenseReducer(state, action) {
@@ -73,7 +73,7 @@ function ExpenseContextProvider({ children }) {
     dispatch({ type: "DELETE", payload: id });
   }
 
-  function updateExpese(id, expenseData) {
+  function updateExpense(id, expenseData) {
     dispatch({ type: "UPDATE", payload: { id: id, data: expenseData } });
   }
 
@@ -81,7 +81,7 @@ function ExpenseContextProvider({ children }) {
     expenses: expenseState,
     addExpense: addExpense,
     deleteExpense: deleteExpense,
-    updateExpese: updateExpese,
+    updateExpense: updateExpense,
   };
 
   return (
