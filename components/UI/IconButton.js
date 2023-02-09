@@ -20,7 +20,8 @@ export default IconButton;
 const styles = StyleSheet.create({
   buttonContainer: {
     padding: 6,
-    margin: 8,
+    marginHorizontal: 8,
+    marginVertical: 2,
     borderRadius: 24,
   },
   pressed: {
