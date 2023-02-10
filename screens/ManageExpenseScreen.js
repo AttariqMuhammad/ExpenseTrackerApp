@@ -30,15 +30,11 @@ function ManageExpense({ route, navigation }) {
     navigation.goBack();
   }
 
-  function confirmHandler() {
+  function confirmHandler(expenseData) {
     if (isEditing) {
-      expenseCtx.updateExpense();
+      expenseCtx.updateExpense(editedExpenseId, expenseData);
     } else {
-      expenseCtx.addExpense({
-        description: "test",
-        amount: 9.99,
-        date: new Date(),
-      });
+      expenseCtx.addExpense(expenseData);
     }
     navigation.goBack();
   }
@@ -46,15 +42,11 @@ function ManageExpense({ route, navigation }) {
   return (
     <View style={styles.rootContainer}>
       <View>
-        <FormInput />
-      </View>
-      <View style={styles.buttons}>
-        <Button mode="flat" style={styles.button} onPress={cancelHandler}>
-          Cancel
-        </Button>
-        <Button style={styles.button} onPress={confirmHandler}>
-          {isEditing ? "Update" : "Add"}
-        </Button>
+        <FormInput
+          onCancel={cancelHandler}
+          onSubmit={confirmHandler}
+          submitLabel={isEditing ? "Update" : "Add"}
+        />
       </View>
       <View style={styles.trashContainer}>
         {isEditing && (
