@@ -5,9 +5,9 @@ import { ExpenseContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../utils/date";
 
 function RecentExpense() {
-  const { expenses } = useContext(ExpenseContext);
+  const expenseCtx = useContext(ExpenseContext);
 
-  const recentExpenses = expenses.filter((expense) => {
+  const recentExpenses = expenseCtx.expenses.filter((expense) => {
     const today = new Date();
     const date7DaysAgo = getDateMinusDays(today, 7);
 
