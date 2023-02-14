@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import ExpenseOutput from "../components/ExpenseOutput/ExpenseOutput";
 import { ExpenseContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../utils/date";
