@@ -4,6 +4,7 @@ import { Text, View, StyleSheet } from "react-native";
 import InputField from "../UI/InputField";
 import Button from "../UI/Button";
 import { getFormattedDate } from "../../utils/date";
+import { GlobalStyles } from "../../constants/styles";
 
 function FormInput({ onCancel, submitLabel, onSubmit, defaultValue }) {
   const [inputs, setInputs] = useState({
@@ -71,6 +72,7 @@ function FormInput({ onCancel, submitLabel, onSubmit, defaultValue }) {
       <View style={styles.rows}>
         <InputField
           label="Amount"
+          invalid={!inputs.amount.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
             onChangeText: inputChangeHandler.bind(this, "amount"),
@@ -80,6 +82,7 @@ function FormInput({ onCancel, submitLabel, onSubmit, defaultValue }) {
         />
         <InputField
           label="Date"
+          invalid={!inputs.date.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
             placeholder: "YYYY-MM-DD",
@@ -93,6 +96,7 @@ function FormInput({ onCancel, submitLabel, onSubmit, defaultValue }) {
       <View>
         <InputField
           label="Description"
+          invalid={!inputs.description.isValid}
           textInputConfig={{
             multiline: true,
             autoCapitalize: "sentences",
@@ -102,7 +106,9 @@ function FormInput({ onCancel, submitLabel, onSubmit, defaultValue }) {
         />
       </View>
       {formIsInvalid && (
-        <Text>Invalid input values - please check your entered data !</Text>
+        <Text style={styles.errorText}>
+          Invalid input values - please check your entered data !
+        </Text>
       )}
       <View style={styles.buttons}>
         <Button mode="flat" style={styles.button} onPress={onCancel}>
@@ -140,5 +146,11 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 6,
+  },
+  errorText: {
+    color: GlobalStyles.colors.error500,
+    fontSize: 16,
+    textAlign: "center",
+    marginVertical: 12,
   },
 });

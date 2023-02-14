@@ -7,6 +7,7 @@ import { GlobalStyles } from "../constants/styles";
 import { ExpenseContext } from "../store/expenses-context";
 
 import FormInput from "../components/ManageExpense/FormInput";
+import { storeExpense } from "../utils/https";
 
 function ManageExpense({ route, navigation }) {
   const editedExpenseId = route.params?.expenseId;
@@ -38,6 +39,7 @@ function ManageExpense({ route, navigation }) {
     if (isEditing) {
       expenseCtx.updateExpense(editedExpenseId, expenseData);
     } else {
+      storeExpense(expenseData);
       expenseCtx.addExpense(expenseData);
     }
     navigation.goBack();
